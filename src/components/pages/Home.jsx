@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Home = () => (
-  <div>
-    <h1>Home page</h1>
+  <div className="greetings d-flex justify-content-center align-items-center">
+    <h1>Bem-vindo!</h1>
   </div>
 )
 

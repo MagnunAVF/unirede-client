@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #f2f2f2;
 }
 
 header {
@@ -20,4 +21,8 @@ footer {
   line-height: 60px;
   background-color: #222;
   color: #dddddd;
+}
+
+.greetings {
+  margin-top: 30px;
 }
