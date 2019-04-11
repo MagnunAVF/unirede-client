@@ -26,3 +26,17 @@ footer {
 .greetings {
   margin-top: 30px;
 }
+
+.users-content {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+// mobile settings
+@media only screen and (max-width: 800px) {
+  .users-content {
+    max-width: 100%;
+    margin-top: 30px;
+  }
+}
