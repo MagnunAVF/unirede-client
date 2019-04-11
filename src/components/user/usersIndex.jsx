@@ -14,7 +14,9 @@ export default class UsersIndex extends Component {
     this.state = {
       usersList: [],
       show: false,
-      redirect: false,
+      redirectToNewUser: false,
+      redirectToShowUser: false,
+      userToShow: 0,
       userIdToDelete: 0
     }
 
@@ -23,6 +25,7 @@ export default class UsersIndex extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleCloseWithDelete = this.handleCloseWithDelete.bind(this);
     this.goToNewUserPage = this.goToNewUserPage.bind(this);
+    this.goToShowUserPage = this.goToShowUserPage.bind(this);
   }
 
   componentDidMount() {
@@ -54,12 +57,19 @@ export default class UsersIndex extends Component {
   }
 
   goToNewUserPage() {
-    this.setState({ ...this.state, redirect: true });
+    this.setState({ ...this.state, redirectToNewUser: true });
+  }
+
+  goToShowUserPage(id) {
+    this.setState({ ...this.state, userToShow: id, redirectToShowUser: true })
   }
 
   render() {
-    if (this.state.redirect) {
+    if (this.state.redirectToNewUser) {
       return <Redirect push to="/new-user" />;
+    } else if (this.state.redirectToShowUser) {
+      const showURL = '/user/' + this.state.userToShow
+      return <Redirect push to={showURL} />;
     }
 
     return (
@@ -83,7 +93,8 @@ export default class UsersIndex extends Component {
               deleteUser={this.deleteUser}
               handleShow={this.handleShow}
               handleClose={this.handleClose}
-              handleCloseWithDelete={this.handleCloseWithDelete} />
+              handleCloseWithDelete={this.handleCloseWithDelete}
+              goToShowUserPage={this.goToShowUserPage} />
           </Card.Body>
         </Card>
 

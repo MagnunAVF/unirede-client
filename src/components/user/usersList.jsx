@@ -18,6 +18,13 @@ export default class UsersList extends Component {
             tooltip="Deletar Usuário"
             onClick={() => this.props.handleShow(user.id)}
           />
+          <IconButton
+            icon="view"
+            buttonColor="primary"
+            iconColor="white"
+            tooltip="Ver Usuário"
+            onClick={() => this.props.goToShowUserPage(user.id)}
+          />
         </td>
       </tr>
     ))
