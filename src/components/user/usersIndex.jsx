@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Card, Modal, Button } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 import UserList from './usersList'
 import IconButton from '../widgets/iconButton'
@@ -13,6 +14,7 @@ export default class UsersIndex extends Component {
     this.state = {
       usersList: [],
       show: false,
+      redirect: false,
       userIdToDelete: 0
     }
 
@@ -20,6 +22,7 @@ export default class UsersIndex extends Component {
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleCloseWithDelete = this.handleCloseWithDelete.bind(this);
+    this.goToNewUserPage = this.goToNewUserPage.bind(this);
   }
 
   componentDidMount() {
@@ -50,12 +53,31 @@ export default class UsersIndex extends Component {
     this.getUsers();
   }
 
+  goToNewUserPage() {
+    this.setState({ ...this.state, redirect: true });
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to="/new-user" />;
+    }
+
     return (
       <div>
         <Card>
           <Card.Body>
-            <Card.Title>Usuários Cadastrados</Card.Title>
+            <Card.Title className="card-title">
+              <span>Usuários Cadastrados</span>
+              <div className="add-button">
+                <IconButton
+                  icon="add"
+                  buttonColor="success"
+                  iconColor="white"
+                  tooltip="Criar Usuário"
+                  onClick={this.goToNewUserPage}
+                />
+              </div>
+            </Card.Title>
             <UserList
               userList={this.state.usersList}
               deleteUser={this.deleteUser}
