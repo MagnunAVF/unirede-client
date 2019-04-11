@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Card, Form, Button } from 'react-bootstrap'
 
-import IconButton from './../widgets/iconButton'
-import FormErrors from './../widgets/formErrors'
-
 const UNIREDE_API_URL = 'http://localhost:4000'
 
 export default class UserCreate extends Component {

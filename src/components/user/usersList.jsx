@@ -3,10 +3,6 @@ import { Table } from 'react-bootstrap'
 import IconButton from '../widgets/iconButton'
 
 export default class UsersList extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
-
   renderRows() {
     const userList = this.props.userList || []
 
