@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Card, Form, Button } from 'react-bootstrap'
+import * as _ from 'lodash'
+import * as EmailValidator from 'email-validator'
+
+import FormErrors from './../widgets/formErrors'
 
 const UNIREDE_API_URL = 'http://localhost:4000'
 
@@ -13,6 +17,15 @@ export default class UserCreate extends Component {
       accessLevel: "Usuário Interno",
       password: "",
       passwordConfirmation: "",
+      nameValid: false,
+      emailValid: false,
+      passwordValid: false,
+      formValid: false,
+      formErrors: {
+        name: '',
+        email: '',
+        password: '',
+      }
     }
 
     this.createUser = this.createUser.bind(this);
@@ -42,15 +55,63 @@ export default class UserCreate extends Component {
     }
   }
 
+  validateField(fieldName, value) {
+    let fieldValidationErrors = this.state.formErrors;
+    let nameValid = this.state.nameValid;
+    let emailValid = this.state.emailValid;
+    let passwordValid = this.state.passwordValid;
+
+    switch (fieldName) {
+      case 'name':
+        nameValid = !_.isEmpty(value);
+        fieldValidationErrors.name = nameValid ? '' : ' Não pode ficar em branco';
+        break;
+      case 'email':
+        emailValid = this.validateEmail(value) && !_.isEmpty(value);
+        fieldValidationErrors.email = emailValid ? '' : ' Não possui o formato de e-mail';
+        break;
+      case 'password':
+        passwordValid = value.length >= 6 && !_.isEmpty(value);
+        fieldValidationErrors.password = passwordValid ? '' : ' Deve ter mais de 6 dígitos';
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      ...this.state,
+      formErrors: fieldValidationErrors,
+      nameValid: nameValid,
+      emailValid: emailValid,
+      passwordValid: passwordValid
+    }, this.validateForm);
+  }
+
+  validateEmail(email) {
+    EmailValidator.validate(email)
+  }
+
+  validateForm() {
+    this.setState({
+      ...this.state,
+      formValid: this.state.nameValid && this.state.emailValid && this.state.passwordValid
+    });
+  }
+
   handleSubmit(event) {
     this.createUser();
   }
 
   handleChange(event) {
     let attribute = event.target.id
-    this.setState({
-      ...this.state, [attribute]: event.target.value
-    })
+    let valueToSet = event.target.value
+
+    this.setState(
+      {
+        ...this.state,
+        [attribute]: valueToSet
+      },
+      () => { this.validateField(attribute, valueToSet) }
+    );
   }
 
   render() {
@@ -59,6 +120,8 @@ export default class UserCreate extends Component {
         <Card>
           <Card.Body>
             <Card.Title>Criar Usuário</Card.Title>
+
+            <FormErrors formErrors={this.state.formErrors} />
 
             <Form>
               <Form.Group controlId="name">
@@ -112,7 +175,10 @@ export default class UserCreate extends Component {
                   onChange={this.handleChange} />
               </Form.Group>
 
-              <Button variant="primary" type="submit" onClick={this.handleSubmit} >
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={this.handleSubmit} >
                 Criar
               </Button>
             </Form>
