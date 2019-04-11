@@ -7,13 +7,15 @@ import NewUser from './../pages/newUser'
 
 const Main = () => (
   <main>
-    <Router>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/users' component={Users} />
-        <Route exact path='/new-user' component={NewUser} />
-      </Switch>
-    </Router>
+    <div className="main-content">
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/users' component={Users} />
+          <Route exact path='/new-user' component={NewUser} />
+        </Switch>
+      </Router>
+    </div>
   </main >
 )
 

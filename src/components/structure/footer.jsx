@@ -6,7 +6,7 @@ import { faCodeBranch } from '@fortawesome/free-solid-svg-icons'
 const Footer = () => (
   <footer>
     <div className="container d-flex justify-content-center">
-      <span>desenvolvido por MagnunAVF </span>
+      <span className="footer-text">desenvolvido por MagnunAVF </span>
       <a href="https://github.com/magnunAVF">
         <FontAwesomeIcon icon={faCodeBranch} color="white" />
       </a>
