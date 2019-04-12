@@ -1,68 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Unirede Client
 
-## Available Scripts
+## Summary
+Unirede Client is a simple frontend solution to register users !
 
-In the project directory, you can run:
+The system was developed with docker.
+Reason: to build something similar to the use of microservices (in the future).
+But why? To maintain isolated services that perform only their functions. In addition, this type of architecture generates less dependence between the diverse teams involved in the development and better infrastructure management.
 
-### `npm start`
+The SPA was developed using Reactjs and React-Router.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting Started
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### `npm test`
+To help run in terminal:
+```
+make help
+```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+Before all, you need to have Docker and Docker compose installed in your computer.
+For more informations you can access [Docker page](https://www.docker.com/).
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installing
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+After clone, run in terminal:
+```
+make setup
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running the locally
 
-### `npm run eject`
+After install, run in terminal:
+```
+make run
+```
+After this, you can access the app in http://localhost:3000/.
+obs.: To test this app you need to run in localhost the [Unirede-API](https://gitlab.com/MagnunAVF/unirede-api).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deployment
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+TODO:
+* MVP => Prod configs to deploy in Heroku
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Contributing
 
-## Learn More
+* Only have to fork the project and make a pull request.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Git Style
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+We use something like [Karma](http://karma-runner.github.io/1.0/dev/git-commit-msg.html) for commit messages.
+Besides this, for new branchs use names in this format:
+```
+type/description
+```
+For example: to create a new branch that is responsible for create user permissions you must use feat/create-user-permissions.
 
-### Code Splitting
+## Versioning
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+We use [SemVer](http://semver.org/) for versioning.
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Not yet defined.
 
-### Making a Progressive Web App
+## Final Notes
+Future improvements (TODO):
+* Refactor index and edit users -> create components to reuse (next issue !!! )
+* Improve forms validation;
+* Refactor to improve code reuse;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Last worked branch: master
 
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Doubts? Problems? send an email to magnunavf@gmail.com
