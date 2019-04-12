@@ -37,6 +37,7 @@ After install, run in terminal:
 make run
 ```
 After this, you can access the app in http://localhost:3000/.
+obs.: To test this app you need to run in localhost the [Unirede-API](https://gitlab.com/MagnunAVF/unirede-api).
 
 
 ## Deployment
