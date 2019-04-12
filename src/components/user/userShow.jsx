@@ -4,7 +4,7 @@ import { Card } from 'react-bootstrap'
 
 const UNIREDE_API_URL = 'http://localhost:4000'
 
-export default class UsersShow extends Component {
+export default class UserShow extends Component {
   constructor(props) {
     super(props)
     this.state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import If from './if'
 import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faTrash, faEye } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faTrash, faEye, faPen } from '@fortawesome/free-solid-svg-icons'
 
 export default class UsersIndex extends Component {
   constructor(props) {
@@ -17,6 +17,8 @@ export default class UsersIndex extends Component {
       return faPlus
     } else if (icon === 'view') {
       return faEye
+    } else if (icon === 'edit') {
+      return faPen
     } else {
       return faTrash
     }

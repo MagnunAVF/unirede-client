@@ -25,6 +25,13 @@ export default class UsersList extends Component {
             tooltip="Ver Usuário"
             onClick={() => this.props.goToShowUserPage(user.id)}
           />
+          <IconButton
+            icon="edit"
+            buttonColor="warning"
+            iconColor="white"
+            tooltip="Editar Usuário"
+            onClick={() => this.props.goToEditUserPage(user.id)}
+          />
         </td>
       </tr>
     ))

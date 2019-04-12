@@ -68,6 +68,7 @@ Not yet defined.
 
 ## Final Notes
 Future improvements (TODO):
+* Refactor index and edit users -> create components to reuse (next issue !!! )
 * Improve forms validation;
 * Refactor to improve code reuse;
 

@@ -5,6 +5,7 @@ import Home from './../pages/home'
 import Users from './../pages/users'
 import NewUser from './../pages/newUser'
 import User from './../pages/user'
+import EditUser from './../pages/editUser'
 
 const Main = () => (
   <main>
@@ -15,6 +16,7 @@ const Main = () => (
           <Route exact path='/users' component={Users} />
           <Route exact path='/new-user' component={NewUser} />
           <Route exact path='/user/:id' component={(props) => <User {...props} />} />
+          <Route exact path='/edit-user/:id' component={(props) => <EditUser {...props} />} />
         </Switch>
       </Router>
     </div>

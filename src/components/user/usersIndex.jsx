@@ -16,7 +16,9 @@ export default class UsersIndex extends Component {
       show: false,
       redirectToNewUser: false,
       redirectToShowUser: false,
+      redirectToEditUser: false,
       userToShow: 0,
+      userToEdit: 0,
       userIdToDelete: 0
     }
 
@@ -26,6 +28,7 @@ export default class UsersIndex extends Component {
     this.handleCloseWithDelete = this.handleCloseWithDelete.bind(this);
     this.goToNewUserPage = this.goToNewUserPage.bind(this);
     this.goToShowUserPage = this.goToShowUserPage.bind(this);
+    this.goToEditUserPage = this.goToEditUserPage.bind(this);
   }
 
   componentDidMount() {
@@ -64,12 +67,19 @@ export default class UsersIndex extends Component {
     this.setState({ ...this.state, userToShow: id, redirectToShowUser: true })
   }
 
+  goToEditUserPage(id) {
+    this.setState({ ...this.state, userToEdit: id, redirectToEditUser: true })
+  }
+
   render() {
     if (this.state.redirectToNewUser) {
       return <Redirect push to="/new-user" />;
     } else if (this.state.redirectToShowUser) {
       const showURL = '/user/' + this.state.userToShow
       return <Redirect push to={showURL} />;
+    } else if (this.state.redirectToEditUser) {
+      const editURL = '/edit-user/' + this.state.userToEdit
+      return <Redirect push to={editURL} />;
     }
 
     return (
@@ -94,7 +104,8 @@ export default class UsersIndex extends Component {
               handleShow={this.handleShow}
               handleClose={this.handleClose}
               handleCloseWithDelete={this.handleCloseWithDelete}
-              goToShowUserPage={this.goToShowUserPage} />
+              goToShowUserPage={this.goToShowUserPage}
+              goToEditUserPage={this.goToEditUserPage} />
           </Card.Body>
         </Card>
 
